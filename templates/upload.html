@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Upload Image</title>
+ </head>
+ <body>
+
+   {% if msg %}
+   <h1>{{ msg }}</h1>
+   {% endif %}
+
+   <h1>Upload new File</h1>
+
+   <form method=post enctype=multipart/form-data>
+     <p><input type=file name=file>
+        <input type=submit value=Upload>
+   </form>
+
+   <h1>Result:</h1>
+   {% if img_src %}
+     <img src="{{ img_src }}">
+   {% endif %}
+     <br>
+   {% if extracted_text %}
+     <p> The extracted text from the image above is:
+       {%for i in extracted_text %}
+       <br>
+       {%for text in i %}
+       {{ text }}
+       {%endfor%}
+       {%endfor%}
+    </p>
+
+   {% else %}
+     There is no text found in this image.
+   {% endif %}
+ </body>
+</html>
